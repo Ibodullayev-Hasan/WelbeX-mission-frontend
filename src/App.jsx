@@ -56,10 +56,16 @@ const App = () => {
 
   const handleLogin = async () => {
     try {
+
+      const trimmedLoginData = {
+        login: loginData.login.trim(),
+        password: loginData.password.trim(),
+      };
+
       const response = await fetch("https://welbex-api.up.railway.app/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(loginData),
+        body: JSON.stringify(trimmedLoginData),
       });
       if (response.ok) {
         const data = await response.json();
@@ -75,10 +81,17 @@ const App = () => {
 
   const handleRegister = async () => {
     try {
+
+      const trimmedRegisterData = {
+        username: registerData.username.trim(),
+        login: registerData.login.trim(),
+        password: registerData.password.trim(),
+      };
+
       const response = await fetch("https://welbex-api.up.railway.app/user/new", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(registerData),
+        body: JSON.stringify(trimmedRegisterData),
       });
       if (response.ok) {
         const data = await response.json();
@@ -115,7 +128,8 @@ const App = () => {
           const uploadData = await uploadResponse.json();
           uploadedMediaUrl = uploadData.fileUrl;
         } else {
-          alert("Failed to upload media file.");
+          const res =  await uploadResponse.json()
+          alert(`Failed to upload media file.${res.error}`);
           return;
         }
       } catch (error) {
