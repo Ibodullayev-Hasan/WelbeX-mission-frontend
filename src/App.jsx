@@ -26,7 +26,7 @@ const App = () => {
     }
 
     try {
-      const response = await fetch("https://welbex-api.up.railway.app/user/profile", {
+      const response = await fetch("https://welbex-backend-production.up.railway.app/user/profile", {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -62,7 +62,7 @@ const App = () => {
         password: loginData.password.trim(),
       };
 
-      const response = await fetch("https://welbex-api.up.railway.app/user/login", {
+      const response = await fetch("https://welbex-backend-production.up.railway.app/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(trimmedLoginData),
@@ -88,7 +88,7 @@ const App = () => {
         password: registerData.password.trim(),
       };
 
-      const response = await fetch("https://welbex-api.up.railway.app/user/new", {
+      const response = await fetch("https://welbex-backend-production.up.railway.app/user/new", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(trimmedRegisterData),
@@ -139,7 +139,7 @@ const App = () => {
     }
 
     try {
-      const response = await fetch("https://welbex-api.up.railway.app/blog/new", {
+      const response = await fetch("https://welbex-backend-production.up.railway.app/blog/new", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -181,7 +181,7 @@ const App = () => {
   
     try {
       const response = await fetch(
-        `https://welbex-api.up.railway.app/blog/delete`,
+        `https://welbex-backend-production.up.railway.app/blog/delete`,
         {
           method: "DELETE",
           headers: {
@@ -211,7 +211,7 @@ const App = () => {
   
     try {
       const response = await fetch(
-        `https://welbex-api.up.railway.app/blog/update`,
+        `https://welbex-backend-production.up.railway.app/blog/update`,
         {
           method: "PATCH",
           headers: {
